@@ -7,11 +7,12 @@ require("dotenv").config();
 
 // middleware
 const morgan = require("morgan");
+const { insertCityDB } = require("./middleware/cities");
 
 app.use(morgan("tiny"));
 app.use(express.json());
 
-app.use(`/api/${packageJson.version}/temp`, temp);
+app.use(`/api/${packageJson.version}/temp`, insertCityDB, temp);
 
 const start = async () => {
   try {
