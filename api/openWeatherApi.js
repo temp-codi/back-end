@@ -1,5 +1,4 @@
 const axios = require("axios");
-console.log(process.env.WEATHER_API);
 
 const getTempData = async () => {
   const result = await axios.get(
