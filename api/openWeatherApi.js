@@ -1,8 +1,8 @@
 const axios = require("axios");
 
-const getTempData = async (lat, lon) => {
+const getTempData = async (city_name) => {
   const result = await axios.get(
-    `http://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&appid=${process.env.WEATHER_API}&units=metric`
+    `http://api.openweathermap.org/data/2.5/forecast?q=${city_name}&appid=${process.env.WEATHER_API}&units=metric`
   );
   return result;
 };

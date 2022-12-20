@@ -7,12 +7,14 @@ const insertCityDB = async (req, res, next) => {
   if (!lon || !lat) {
     req.errorCode = "please enter lon and lat in Get query";
     next();
+    return;
   }
   const { data: geoData } = await reverseGeoApi(lat, lon);
   // cityname = data.city
   if (!geoData.city) {
     req.errorCode = "cannot retrieve city name";
     next();
+    return;
   }
 
   // db 조회
@@ -25,6 +27,7 @@ const insertCityDB = async (req, res, next) => {
     });
     req.dbSuccessData = city;
     next();
+    return;
   }
 
   // if there are data in our data => check if req city exist
@@ -39,7 +42,9 @@ const insertCityDB = async (req, res, next) => {
 
   if (is_Exist) {
     if (dbCity.is_called_today === true) {
-      return res.status(200).json({ res: true, data: dbCity });
+      req.dbSuccessData = dbCity;
+      next();
+      return;
     } else {
       const city = await Cities.findOneAndUpdate(
         { city_name: geoData.city },
@@ -48,6 +53,7 @@ const insertCityDB = async (req, res, next) => {
       );
       req.dbSuccessData = city;
       next();
+      return;
     }
   } else {
     const city = await Cities.create({
@@ -56,6 +62,7 @@ const insertCityDB = async (req, res, next) => {
     });
     req.dbSuccessData = city;
     next();
+    return;
   }
 };
 

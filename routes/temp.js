@@ -1,15 +1,50 @@
 const express = require("express");
 const router = express.Router();
 const { getTempData } = require("../api/openWeatherApi");
-const { reverseGeoApi } = require("../api/bigData");
-const Cities = require("../models/Cities");
+const City = require("../models/City");
+const getMonth = require("../utils/getMonth");
 
 router.get("/", async (req, res) => {
   const { errorCode, dbSuccessData } = req;
-  if (errorCode) {
-    return res.status(500).json({ msg: errorCode });
+  if (errorCode !== undefined) {
+    return res.status(400).json({ msg: errorCode });
   }
-  return res.status(200).json({ res: true, data: dbSuccessData });
+  const { data: cityData } = await getTempData(dbSuccessData.city_name);
+  // console.log("year", new Date(cityData.list[0].dt * 1000).getFullYear());
+  // console.log("month", getMonth(new Date(cityData.list[0].dt * 1000)));
+  // console.log("day", new Date(cityData.list[0].dt * 1000).getDate());
+
+  if (cityData.cod !== "200") {
+    return res.status(400).json({ msg: "something wrong with weather api" });
+  }
+
+  const updatedList = cityData.list.map((item) => {
+    return {
+      dt: item.dt,
+      temp: item.main.temp,
+      feels_like: item.main.feels_like,
+      humidity: item.main.humidity,
+      cloud: item.clouds.all,
+      wind_speed: item.wind.speed,
+      weather_id: item.weather[0].id,
+      weather_main: item.weather[0].main,
+      weather_desc: item.weather[0].description,
+    };
+  });
+
+  // db 조회
+  const city = await City.findOne({ city_name: dbSuccessData.city_name });
+  console.log(city);
+  // if there are no cities
+  if (!city) {
+    const city = await City.create({
+      city_name: cityData.city.name,
+      list: updatedList,
+    });
+    return res.status(200).json({ res: true, data: city });
+  }
+
+  return res.status(200).json({ res: true, data: city });
 });
 
 module.exports = router;

@@ -2,7 +2,7 @@ const connectDB = require("./db/connect");
 const express = require("express");
 const app = express();
 const packageJson = require("./package.json");
-const temp = require("./routes/temp");
+const router = require("./routes/temp");
 require("dotenv").config();
 
 // middleware
@@ -12,7 +12,7 @@ const { insertCityDB } = require("./middleware/cities");
 app.use(morgan("tiny"));
 app.use(express.json());
 
-app.use(`/api/${packageJson.version}/temp`, insertCityDB, temp);
+app.use(`/api/${packageJson.version}/temp`, insertCityDB, router);
 
 const start = async () => {
   try {
