@@ -7,11 +7,11 @@ const getScrapeData = async () => {
   const response = await axios.get(url);
   const $ = cheerio.load(response.data);
 
-  let hashMap = {};
+  // let hashMap = {};
+  let arr = [];
 
   for (let i = 1; i < 8; i++) {
     const contaner = $(`table:eq(${i}) tr`);
-    const arr = [];
     contaner.each(function (i) {
       const id = $(this).find("td:nth-child(1)").text().trim();
       const main = $(this).find("td:nth-child(2)").text().trim();
@@ -21,9 +21,9 @@ const getScrapeData = async () => {
         arr.push(obj);
       }
     });
-    hashMap[i] = arr;
+    // hashMap[i] = arr;
   }
-  console.log(hashMap);
+  return arr;
 };
 
 module.exports = { getScrapeData };

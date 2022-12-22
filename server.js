@@ -19,8 +19,8 @@ app.use(`/api/${packageJson.version}/temp`, insertCityDB, router);
 app.use(`/api/${packageJson.version}/test`, routerScrape);
 
 // test
-const { getScrapeData } = require("./api/scrape");
-getScrapeData();
+const { testNotionDB } = require("./api/notion");
+testNotionDB();
 
 const start = async () => {
   try {
