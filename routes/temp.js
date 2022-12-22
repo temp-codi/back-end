@@ -2,7 +2,6 @@ const express = require("express");
 const router = express.Router();
 const { getTempData } = require("../api/openWeatherApi");
 const City = require("../models/City");
-const getMonth = require("../utils/getMonth");
 
 router.get("/", async (req, res) => {
   const { errorCode, dbSuccessData } = req;
@@ -10,9 +9,6 @@ router.get("/", async (req, res) => {
     return res.status(400).json({ msg: errorCode });
   }
 
-  // console.log("year", new Date(cityData.list[0].dt * 1000).getFullYear());
-  // console.log("month", getMonth(new Date(cityData.list[0].dt * 1000)));
-  // console.log("day", new Date(cityData.list[0].dt * 1000).getDate());
   console.log(dbSuccessData.city_name);
   // db 조회
   const city = await City.findOne({ city_name: dbSuccessData.city_name });
