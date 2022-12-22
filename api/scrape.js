@@ -26,4 +26,4 @@ const getScrapeData = async () => {
   console.log(hashMap);
 };
 
-module.exports = getScrapeData;
+module.exports = { getScrapeData };

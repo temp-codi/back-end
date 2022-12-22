@@ -1,9 +1,7 @@
-const { Client } = require("@notionhq/client");
-
-const notion = new Client({ auth: process.env.NOTION_ACCESS_TOKEN });
+const notion = require("../db/notion");
 
 const getNotionDB = async () => {
-  const dbId = "65b6d5dd9e444811aa8bdd442c43eefe";
+  const dbId = process.env.NOTION_DB_ID;
   const response = await notion.databases.retrieve({ database_id: dbId });
   console.log(response);
 };
