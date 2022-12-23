@@ -18,9 +18,9 @@ app.use(`/api/${packageJson.version}/temp`, insertCityDB, router);
 
 app.use(`/api/${packageJson.version}/test`, routerScrape);
 
-// test
+// notion 에 추가하기
 const { testNotionDB } = require("./api/notion");
-testNotionDB();
+// testNotionDB();
 
 const start = async () => {
   try {
