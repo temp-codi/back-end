@@ -5,11 +5,10 @@ const configuration = new Configuration({
 });
 const openai = new OpenAIApi(configuration);
 
-const useOpenGPT = async () => {
+const useOpenGPT = async ({ temp, event, mbti }) => {
   const response = await openai.createCompletion({
     model: "text-davinci-003",
-    prompt:
-      'Decide whether a Tweet\'s sentiment is positive, neutral, or negative.\n\nTweet: "I loved the new Batman movie!"\nSentiment:',
+    prompt: `list of clothes to wear for ${event} on a ${temp} day for a ${mbti} type person`,
     temperature: 0,
     max_tokens: 60,
     top_p: 1,

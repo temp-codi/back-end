@@ -28,7 +28,7 @@ const { getGoogleSearchImgs } = require("./api/googleSearch");
 
 // openGPT
 const { useOpenGPT } = require("./api/openGPT");
-useOpenGPT();
+useOpenGPT({ temp: "hot", event: "business meeting", mbti: "enfp" });
 
 const start = async () => {
   try {
