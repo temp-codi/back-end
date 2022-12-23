@@ -26,6 +26,10 @@ const { testNotionDB } = require("./api/notion");
 const { getGoogleSearchImgs } = require("./api/googleSearch");
 // getGoogleSearchImgs("pants for men", 1);
 
+// openGPT
+const { useOpenGPT } = require("./api/openGPT");
+useOpenGPT();
+
 const start = async () => {
   try {
     await connectDB(process.env.MONGO_URI);

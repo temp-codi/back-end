@@ -6,7 +6,7 @@ const getGoogleSearchImgs = async ({ category, pageNo, gender }) => {
    process.env.GOOGLE_API_KEY
  }&cx=${process.env.GOOGLE_SEARCH_ENGINE_ID}&q=${
     category + "for" + gender
-  }&searchType=image&num=5&start=${pageNo}
+  }&searchType=image&num=10&start=${pageNo}
  `);
   const arr = response.data.items.map((item) => {
     return item.link;
