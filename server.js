@@ -22,6 +22,10 @@ app.use(`/api/${packageJson.version}/test`, routerScrape);
 const { testNotionDB } = require("./api/notion");
 // testNotionDB();
 
+// google search engine
+const { getGoogleSearchImgs } = require("./api/googleSearch");
+getGoogleSearchImgs("pants for men");
+
 const start = async () => {
   try {
     await connectDB(process.env.MONGO_URI);
