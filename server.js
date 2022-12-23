@@ -24,7 +24,7 @@ const { testNotionDB } = require("./api/notion");
 
 // google search engine
 const { getGoogleSearchImgs } = require("./api/googleSearch");
-getGoogleSearchImgs("pants for men", 1);
+// getGoogleSearchImgs("pants for men", 1);
 
 const start = async () => {
   try {
