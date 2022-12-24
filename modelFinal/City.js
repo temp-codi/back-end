@@ -6,7 +6,7 @@ const CitySchema = new mongoose.Schema({
     trim: true,
     required: true,
   },
-  is_called_today: { type: Boolean, required: true },
+  api_called_date: { type: String, required: true },
   list: [
     {
       dt: { type: Number, required: true },
