@@ -107,6 +107,29 @@ The REST API to the example app is described below.
 }
 ```
 
+### Request
+
+`POST /temp/getCode`
+
+```
+    curl http://localhost:8080/api/v1/temp/getCode \
+    -H "Content-Type: application/json \
+    -d "{"code" : 200}"
+```
+
+### Response
+
+```js
+{
+    "res": true,
+    "data": {
+        "id": "200",
+        "main": "Thunderstorm",
+        "desc": "thunderstorm with light rain"
+    }
+}
+```
+
 ### API Endpoints
 
 Sample:
