@@ -2,6 +2,9 @@
 
 - [Setup](#install)
 - [REST API](#rest-api)
+- [Reverse Geo-location](#reverse-geo-location)
+- [Get Weather Data](#get-weather-data)
+- [Weather Code](#weather-code)
 
 ## Install
 
@@ -107,39 +110,14 @@ The REST API to the example app is described below.
 }
 ```
 
-## Weather Code (interpretation)
-
-### Request
-
-`POST /temp/getCode`
-
-```
-    curl http://localhost:8080/api/v1/temp/getCode \
-    -H "Content-Type: application/json \
-    -d "{"code" : 200}"
-```
-
-### Response
-
-```js
-{
-    "res": true,
-    "data": {
-        "id": "200",
-        "main": "Thunderstorm",
-        "desc": "thunderstorm with light rain"
-    }
-}
-```
-
 ## Get Weather Data
 
 ### Request
 
-`POST /city/location?lon,lat`
+`POST /temp`
 
 ```
-    curl http://localhost:8080/api/v1/city?lon=127.390209&lat=36.336614 \
+    curl http://localhost:8080/api/v1/temp \
     -H "Content-Type: application/json \
     -d "{"city" : "Daejeon", "lon" : "127.390209", "lat": "36.336614"}"
 ```
@@ -168,6 +146,31 @@ The REST API to the example app is described below.
         "pollution_en": "Fair",
         "pollution_kr": "좋음",
         "__v": 0
+    }
+}
+```
+
+## Weather Code
+
+### Request
+
+`POST /temp/getCode`
+
+```
+    curl http://localhost:8080/api/v1/temp/getCode \
+    -H "Content-Type: application/json \
+    -d "{"code" : 200}"
+```
+
+### Response
+
+```js
+{
+    "res": true,
+    "data": {
+        "id": "200",
+        "main": "Thunderstorm",
+        "desc": "thunderstorm with light rain"
     }
 }
 ```
