@@ -20,7 +20,7 @@ app.use(`/api/${packageJson.version}/test`, routerScrape);
 
 // notion 에 추가하기
 const { testNotionDB } = require("./api/notion");
-// testNotionDB();
+testNotionDB();
 
 // google search engine
 const { getGoogleSearchImgs } = require("./api/googleSearch");
@@ -28,7 +28,7 @@ const { getGoogleSearchImgs } = require("./api/googleSearch");
 
 // openGPT
 const { useOpenGPT } = require("./api/openGPT");
-useOpenGPT({ temp: "hot", event: "business meeting", mbti: "enfp" });
+useOpenGPT({ temp: "hot", event: "gardening", mbti: "intj" });
 
 const start = async () => {
   try {
