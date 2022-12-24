@@ -2,10 +2,10 @@
   "name": "back-end",
   "version": "v1",
   "description": "express backend + mongoDB",
-  "main": "server.js",
+  "main": "app.js",
   "port": "8080",
   "scripts": {
-    "start": "nodemon server"
+    "start": "nodemon app.js"
   },
   "repository": {
     "type": "git",
