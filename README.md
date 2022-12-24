@@ -107,6 +107,8 @@ The REST API to the example app is described below.
 }
 ```
 
+## Weather Code (interpretation)
+
 ### Request
 
 `POST /temp/getCode`
@@ -126,6 +128,46 @@ The REST API to the example app is described below.
         "id": "200",
         "main": "Thunderstorm",
         "desc": "thunderstorm with light rain"
+    }
+}
+```
+
+## Get Weather Data
+
+### Request
+
+`POST /city/location?lon,lat`
+
+```
+    curl http://localhost:8080/api/v1/city?lon=127.390209&lat=36.336614 \
+    -H "Content-Type: application/json \
+    -d "{"city" : "Daejeon", "lon" : "127.390209", "lat": "36.336614"}"
+```
+
+### Response
+
+```js
+{
+    "res": true,
+    "data": {
+        "_id": "63a78c57f67379d2ad15d75e",
+        "city_name": "Daejeon",
+        "api_called_date": "Sun Dec 25 2022 08:33:43 GMT+0900 (대한민국 표준시)",
+        "list": [
+            {
+                "dt": 1671926400,
+                "temp": -14.03,
+                "feels_like": -14.03,
+                "humidity": 79,
+                "cloud_in_percentage": 10,
+                "wind_speed": 0.54,
+                "weather_id": 800,
+                "_id": "63a78c57f67379d2ad15d75f"
+            },
+        ],
+        "pollution_en": "Fair",
+        "pollution_kr": "좋음",
+        "__v": 0
     }
 }
 ```
