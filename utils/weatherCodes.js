@@ -1,4 +1,4 @@
-const arr = [
+module.exports = [
   { id: "311", main: "Drizzle", desc: "drizzle rain" },
   { id: "310", main: "Drizzle", desc: "light intensity drizzle rain" },
   { id: "302", main: "Drizzle", desc: "heavy intensity drizzle" },

@@ -1,8 +1,13 @@
 const express = require("express");
 const router = express.Router();
-const createUpdateCityTemp = require("../controllerFinal/temp");
+const {
+  createUpdateCityTemp,
+  getWeatherCode,
+} = require("../controllerFinal/temp/index");
 
 router.post("/", createUpdateCityTemp);
+
+router.post("/getCode", getWeatherCode);
 
 // mongoDB find
 

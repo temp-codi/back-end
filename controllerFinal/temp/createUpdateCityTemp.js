@@ -1,8 +1,8 @@
-const City = require("../modelFinal/City");
-const asyncWrapper = require("../middleware/async");
-const { createCustomError } = require("../errors/custom-error");
-const { getTempData, pollutionApi } = require("../apiFinal/weather");
-const { weatherApiUpdateList, calculateAqi } = require("../utils/weather");
+const City = require("../../modelFinal/City");
+const asyncWrapper = require("../../middleware/async");
+const { createCustomError } = require("../../errors/custom-error");
+const { getTempData, pollutionApi } = require("../../apiFinal/weather");
+const { weatherApiUpdateList, calculateAqi } = require("../../utils/weather");
 
 /** either create or update city temp to DB */
 const createUpdateCityTemp = asyncWrapper(async (req, res, next) => {
