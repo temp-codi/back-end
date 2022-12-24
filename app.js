@@ -12,7 +12,9 @@ app.use(express.json());
 
 // routes
 const city = require("./routesFinal/city");
+const temp = require("./routesFinal/temp");
 app.use(`/api/${packageJson.version}/city`, city);
+app.use(`/api/${packageJson.version}/temp`, temp);
 
 // error middleware
 const NotFound = require("./middleware/not-found");
