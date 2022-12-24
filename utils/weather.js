@@ -1,6 +1,11 @@
 /** converts to appropriate schema for mongoDB */
 const weatherApiUpdateList = (list) => {
   return list.map((item) => {
+    const {
+      dt,
+      main: { temp, feels_like, humidity },
+      weather: { id },
+    } = item;
     return { hello: "" };
   });
 };

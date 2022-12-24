@@ -1,7 +1,7 @@
-const axios = require("axios");
 const notion = require("../db/notion");
 const { getScrapeData } = require("../api/scrape");
 const { notionParam } = require("../utils/notionParam");
+const { writeFileSync } = require("fs");
 
 /** 일반 노션 데이터 조회 => 아무짝에도 쓸모없는 API */
 const getNotionDB = async () => {
@@ -9,9 +9,32 @@ const getNotionDB = async () => {
   const response = await notion.databases.retrieve({ database_id: dbId });
   console.log(response);
 };
+/** 노션에서 받아온 데이터를 로컬에 파일에 저장하기 */
+const getTableDB = async () => {
+  const dbId = process.env.NOTION_DB_ID;
+  const payload = {
+    path: `databases/${dbId}/query`,
+    method: "POST",
+  };
+  const { results } = await notion.request(payload);
+
+  const table = results.map((item) => {
+    return {
+      id: item.properties.id.title[0].plain_text,
+      main: item.properties.main.rich_text[0].plain_text,
+      desc: item.properties.desc.rich_text[0].plain_text,
+      korean:
+        item.properties.korean.rich_text.length === 0
+          ? undefined
+          : item.properties.korean.rich_text[0].plain_text,
+    };
+  });
+
+  writeFileSync("./utils/weatherCodes.js", JSON.stringify(table));
+};
 
 /** 데이터 베이스에 넣는 API */
-const testNotionDB = async () => {
+const createNotionDB = async () => {
   const dbId = process.env.NOTION_DB_ID;
 
   const scrapeData = await getScrapeData();
@@ -25,4 +48,4 @@ const testNotionDB = async () => {
   }
 };
 
-module.exports = { getNotionDB, testNotionDB };
+module.exports = { getNotionDB, getTableDB, createNotionDB };

@@ -22,6 +22,10 @@ const errorHandlerMiddleware = require("./middleware/error-handler");
 app.use(NotFound);
 app.use(errorHandlerMiddleware);
 
+// testing
+const { getTableDB } = require("./api/notion");
+// getTableDB()
+
 // starter
 const start = async () => {
   try {
