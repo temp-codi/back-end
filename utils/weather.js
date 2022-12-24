@@ -4,9 +4,19 @@ const weatherApiUpdateList = (list) => {
     const {
       dt,
       main: { temp, feels_like, humidity },
-      weather: { id },
+      weather: [{ id }],
+      clouds: { all },
+      wind: { speed },
     } = item;
-    return { hello: "" };
+    return {
+      dt,
+      temp,
+      feels_like,
+      humidity,
+      cloud_in_percentage: all,
+      wind_speed: speed,
+      weather_id: id,
+    };
   });
 };
 

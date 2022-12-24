@@ -18,19 +18,26 @@ const createUpdateCityTemp = asyncWrapper(async (req, res, next) => {
 
   // pollution info
   const aqi = await pollutionApi(lat, lon);
-  console.log(aqi);
 
   /******************************************************************/
-
   // update list for schema
   const updatedList = weatherApiUpdateList(weatherList);
-  // console.log(updatedList);
 
   // interpret pollution aqi
   const aqiIndex = calculateAqi(aqi);
-  // { en: 'Fair', kr: '좋음' }
 
-  return res.status(200).json({ res: true, data: "" });
+  /******************************************************************/
+  // insert into mongoDB
+  const response = await City.create({
+    city_name: city, // req.body data
+    list: updatedList,
+    pollution_en: aqiIndex.en,
+    pollution_kr: aqiIndex.kr,
+    is_called_today: true,
+  });
+  console.log(response);
+
+  return res.status(200).json({ res: true, data: updatedList });
 });
 
 module.exports = createUpdateCityTemp;

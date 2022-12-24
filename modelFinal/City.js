@@ -16,13 +16,13 @@ const CitySchema = new mongoose.Schema({
       },
       feels_like: { type: Number, required: true },
       humidity: { type: Number, required: true },
-      cloud: { type: Number, required: true },
+      cloud_in_percentage: { type: Number, required: true },
       wind_speed: { type: Number, required: true },
       weather_id: { type: Number, required: true },
-      weather_main: { type: String, required: true },
-      weather_desc: { type: String, required: true },
     },
   ],
+  pollution_en: { type: String, required: true },
+  pollution_kr: { type: String, required: true },
 });
 
 module.exports = mongoose.set("strictQuery", true).model("cities", CitySchema);
