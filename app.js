@@ -17,9 +17,11 @@ app.use(express.json());
 const city = require("./routes/city");
 const temp = require("./routes/temp");
 const openai = require("./routes/openai");
+const google = require("./routes/google");
 app.use(`/api/${packageJson.version}/city`, city);
 app.use(`/api/${packageJson.version}/temp`, temp);
 app.use(`/api/${packageJson.version}/openai`, openai);
+app.use(`/api/${packageJson.version}/google`, google);
 
 // error middleware
 /*******************************************************/

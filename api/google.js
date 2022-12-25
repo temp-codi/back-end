@@ -1,5 +1,6 @@
 const axios = require("axios");
 
+/** 구글 이미지 검색 api */
 const getGoogleSearchImgs = async ({ category, pageNo, gender }) => {
   const response = await axios.get(`
  https://www.googleapis.com/customsearch/v1?key=${
@@ -9,9 +10,13 @@ const getGoogleSearchImgs = async ({ category, pageNo, gender }) => {
   }&searchType=image&num=10&start=${pageNo}
  `);
   const arr = response.data.items.map((item) => {
-    return item.link;
+    const {
+      link,
+      image: { contextLink },
+    } = item;
+    return { img: link, siteLink: contextLink };
   });
   return arr;
 };
 
-module.exports = { getGoogleSearchImgs };
+module.exports = getGoogleSearchImgs;

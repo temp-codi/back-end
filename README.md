@@ -204,7 +204,64 @@ The REST API to the example app is described below.
 }
 ```
 
-### API Endpoints
+## Search Images (using Google Search API)
 
-Sample:
-https://github.com/libeyondea/backend-node-express/edit/main/README.md
+### Request
+
+`POST /google/img`
+
+```
+    curl http://localhost:8080/api/v1/google/img \
+    -H "Content-Type: application/json \
+    -d "{"category" : "Raincoat", "pageNo": "1", "gender": "men"}"
+```
+
+### Response
+
+```js
+{
+    "res": true,
+    "data": [
+        {
+            "img": "https://m.media-amazon.com/images/I/81m2Q+F3z-L._AC_UY780_.jpg",
+            "siteLink": "https://www.amazon.com/Ponchos-Children%EF%BC%8CEmergency-Disposable-Raincoat-Drawstring/dp/B0BNX2NNG4"
+        },
+        {
+            "img": "https://ae01.alicdn.com/kf/He2012f63a6c74ebda7396512b998f2766/Asinse-3-in-1-Outdoor-Waterproof-Reusable-Hooded-Rain-Poncho-Raincoat-for-Men-Women-Hiking-Cycling.jpg_Q90.jpg_.webp",
+            "siteLink": "https://www.aliexpress.com/item/1005003490489904.html"
+        },
+        {
+            "img": "https://assets.ajio.com/medias/sys_master/root/h70/h0e/13384890253342/-1117Wx1400H-460378903-white-MODEL.jpg",
+            "siteLink": "https://www.colegiogamarra.com/2016/11/colegiogamarra.com/politica-de-cookies?ss=4_171_6_21_79&pp=branded+raincoat+for+men&ii=11540760"
+        },
+        {
+            "img": "https://m.media-amazon.com/images/I/61c2vt0u9tL.jpg",
+            "siteLink": "https://www.amazon.com/Raincoat-Waterproof-Oxford-Jackets-Lightweight/dp/B0B31DD3MZ"
+        },
+        {
+            "img": "https://cdn.shopify.com/s/files/1/2676/2676/products/1_ZIPPERTRENCHCOAT_black.jpg?v=1611675613",
+            "siteLink": "https://theraincoat.com/products/zipper-trench-coat-black-raincoat-for-men"
+        },
+        {
+            "img": "https://m.media-amazon.com/images/I/71JYd9Vp8-S._AC_UF1000,1000_QL80_.jpg",
+            "siteLink": "https://www.amazon.com/CeroPro-Rain-Ponchos-Adults-Disposable/dp/B08M7VY92Z"
+        },
+        {
+            "img": "https://cdn.shopify.com/s/files/1/2676/2676/products/GREY_077409.jpg?v=1540752352",
+            "siteLink": "https://theraincoat.com/products/biker-jacket-grey-raincoat-for-men"
+        },
+        {
+            "img": "https://ae01.alicdn.com/kf/Hc1e7f06a4b6146679e1b6d71bc52f5509/Lightweight-Waterproof-Hooded-Rain-Poncho-Raincoat-for-Men-Women-Outdoor-Hiking-Cycling-Camping-Mat-Canopy-Shelter.jpg_Q90.jpg_.webp",
+            "siteLink": "https://www.aliexpress.com/item/4001160273942.html"
+        },
+        {
+            "img": "https://cdn.shopify.com/s/files/1/2676/2676/products/longzipperblack.jpg?v=1611662127",
+            "siteLink": "https://theraincoat.com/products/long-zipper-coat-black-raincoat-for-men"
+        },
+        {
+            "img": "https://ae01.alicdn.com/kf/S6398f8a337a9422b9a6cfa52bb7d04f0a/Golf-Bag-Rain-Cover-Waterproof-Hood-Protection-Durable-Lightweight-Club-Bags-Raincoat-For-Men-Women-Golf.jpg_Q90.jpg_.webp",
+            "siteLink": "https://www.aliexpress.com/item/1005004569251032.html"
+        }
+    ]
+}
+```

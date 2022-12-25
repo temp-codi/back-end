@@ -1,10 +1,17 @@
-const { getGoogleSearchImgs } = require("../../api/googleSearch");
+const asyncWrapper = require("../../middleware/async");
+const getGoogleSearchImgs = require("../../api/google");
 
-const getClothes = async (req, res) => {
+const getClothes = asyncWrapper(async (req, res, next) => {
   const { category, pageNo, gender } = req.body;
-  console.log(category, pageNo, gender);
+
+  if (!category || !pageNo || !gender) {
+    return next(
+      createCustomError("please enter weather desc in req body", 404)
+    );
+  }
+
   const arr = await getGoogleSearchImgs({ category, pageNo, gender });
   return res.status(200).json({ res: true, data: arr });
-};
+});
 
-module.exports = { getClothes };
+module.exports = getClothes;
