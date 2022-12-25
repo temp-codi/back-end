@@ -1,5 +1,5 @@
 const notion = require("../db/notion");
-const { getScrapeData } = require("../api/scrape");
+const { getScrapeData } = require("../utils/scrape");
 const { notionParam } = require("../utils/notionParam");
 const { writeFileSync } = require("fs");
 

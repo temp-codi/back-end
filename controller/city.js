@@ -1,6 +1,6 @@
 const asyncWrapper = require("../middleware/async");
 const { createCustomError } = require("../errors/custom-error");
-const { reverseGeoApi } = require("../apiFinal/reverse-geo");
+const { reverseGeoApi } = require("../api/reverse-geo");
 
 const reverseGeoLocation = asyncWrapper(async (req, res, next) => {
   const { lon, lat } = req.query;

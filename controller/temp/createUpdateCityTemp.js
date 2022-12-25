@@ -1,7 +1,7 @@
-const City = require("../../modelFinal/City");
+const City = require("../../model/City");
 const asyncWrapper = require("../../middleware/async");
 const { createCustomError } = require("../../errors/custom-error");
-const { getTempData, pollutionApi } = require("../../apiFinal/weather");
+const { getTempData, pollutionApi } = require("../../api/weather");
 const {
   weatherApiUpdateList,
   calculateAqi,

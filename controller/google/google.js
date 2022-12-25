@@ -1,4 +1,4 @@
-const { getGoogleSearchImgs } = require("../api/googleSearch");
+const { getGoogleSearchImgs } = require("../../api/googleSearch");
 
 const getClothes = async (req, res) => {
   const { category, pageNo, gender } = req.body;

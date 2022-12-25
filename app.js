@@ -4,27 +4,32 @@ const app = express();
 const packageJson = require("./package.json");
 require("dotenv").config();
 
+// Basic SetUp
+/*******************************************************/
 // logger
 const morgan = require("morgan");
 app.use(morgan("tiny"));
 // allow body req
 app.use(express.json());
 
-// routes
-const city = require("./routesFinal/city");
-const temp = require("./routesFinal/temp");
+// Routes
+/*******************************************************/
+const city = require("./routes/city");
+const temp = require("./routes/temp");
 app.use(`/api/${packageJson.version}/city`, city);
 app.use(`/api/${packageJson.version}/temp`, temp);
 
 // error middleware
+/*******************************************************/
 const NotFound = require("./middleware/not-found");
 const errorHandlerMiddleware = require("./middleware/error-handler");
 app.use(NotFound);
 app.use(errorHandlerMiddleware);
 
-// testing
+// Testing
+/*******************************************************/
+// 노션 테이블 생성하기
 const { getTableDB } = require("./api/notion");
-// getTableDB()
 
 // starter
 const start = async () => {
