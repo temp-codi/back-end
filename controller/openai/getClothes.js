@@ -22,7 +22,7 @@ const getClothes = asyncWrapper(async (req, res, next) => {
 
   // convert to array with no numbers, no spaces at the end, and no string that contains only a number
 
-  return res.status(200).json({ res: true, data: newArr, text });
+  return res.status(200).json({ res: true, data: newArr });
 });
 
 module.exports = getClothes;

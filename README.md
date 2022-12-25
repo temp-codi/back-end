@@ -175,6 +175,35 @@ The REST API to the example app is described below.
 }
 ```
 
+## Recommend Clothes (using OpenAI)
+
+### Request
+
+`POST /openai`
+
+```
+    curl http://localhost:8080/api/v1/temp/getCode \
+    -H "Content-Type: application/json \
+    -d "{"desc" : "rain", "no": "7"}"
+```
+
+### Response
+
+```js
+{
+    "res": true,
+    "data": [
+        "Waterproof coat",
+        "Rubber boots",
+        "Rain hat",
+        "Rain pants",
+        "Wool socks",
+        "Poncho",
+        "Umbrella"
+    ]
+}
+```
+
 ### API Endpoints
 
 Sample:
