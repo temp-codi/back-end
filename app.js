@@ -16,8 +16,10 @@ app.use(express.json());
 /*******************************************************/
 const city = require("./routes/city");
 const temp = require("./routes/temp");
+const openai = require("./routes/openai");
 app.use(`/api/${packageJson.version}/city`, city);
 app.use(`/api/${packageJson.version}/temp`, temp);
+app.use(`/api/${packageJson.version}/openai`, openai);
 
 // error middleware
 /*******************************************************/
@@ -30,6 +32,9 @@ app.use(errorHandlerMiddleware);
 /*******************************************************/
 // 노션 테이블 생성하기
 const { getTableDB } = require("./api/notion");
+
+const useOpenGPT = require("./api/openAi");
+// useOpenGPT("stormy");
 
 // starter
 const start = async () => {
