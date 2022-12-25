@@ -5,6 +5,8 @@
 - [Reverse Geo-location](#reverse-geo-location)
 - [Get Weather Data](#get-weather-data)
 - [Weather Code](#weather-code)
+- [Open AI](#recommend-clothes-using-openai)
+- [Google Img Search](#search-images-using-google-search-api)
 
 ## Install
 
