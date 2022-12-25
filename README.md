@@ -182,7 +182,7 @@ The REST API to the example app is described below.
 `POST /openai`
 
 ```
-    curl http://localhost:8080/api/v1/temp/getCode \
+    curl http://localhost:8080/api/v1/openai \
     -H "Content-Type: application/json \
     -d "{"desc" : "rain", "no": "7"}"
 ```
