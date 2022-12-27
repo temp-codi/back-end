@@ -37,10 +37,9 @@ const createUpdateCityTemp = asyncWrapper(async (req, res, next) => {
       // interpret pollution aqi
       const aqiIndex = calculateAqi(aqi);
 
-      const UpdateCity = City.findOneAndUpdate(
+      const UpdateCity = await City.findOneAndUpdate(
         { city_name: city },
         {
-          city_name: city,
           api_called_date: new Date(),
           list: updatedList,
           pollution_en: aqiIndex.en,

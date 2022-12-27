@@ -1,6 +1,8 @@
 const connectDB = require("./db/connect");
 const express = require("express");
 const app = express();
+const server = require("http").Server(app);
+const cors = require("cors");
 const packageJson = require("./package.json");
 require("dotenv").config();
 
@@ -11,6 +13,13 @@ const morgan = require("morgan");
 app.use(morgan("tiny"));
 // allow body req
 app.use(express.json());
+// cors
+app.use(cors());
+app.use(
+  cors({
+    origin: "http://localhost:8080",
+  })
+);
 
 // Routes
 /*******************************************************/
@@ -43,7 +52,7 @@ const start = async () => {
   try {
     await connectDB(process.env.MONGO_URI);
     console.log("Connected to DB");
-    app.listen(packageJson.port, () => {
+    server.listen(packageJson.port, () => {
       console.log("listening on port " + packageJson.port);
     });
   } catch (err) {
