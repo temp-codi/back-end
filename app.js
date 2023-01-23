@@ -29,9 +29,9 @@ app.use(xss());
 app.use(helmet());
 
 // Swagger
-const swaggerUI = require("swagger-ui-express");
-const YAML = require("yamljs");
-const swaggerDoument = YAML.load("./swagger.yaml");
+// const swaggerUI = require("swagger-ui-express");
+// const YAML = require("yamljs");
+// const swaggerDoument = YAML.load("./swagger.yaml");
 
 // Routes
 /*******************************************************/
