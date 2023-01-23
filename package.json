@@ -3,21 +3,11 @@
   "version": "v1",
   "description": "express backend + mongoDB",
   "main": "app.js",
-  "port": "8080",
   "scripts": {
     "start": "nodemon app.js"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/temp-codi/back-end.git"
-  },
-  "keywords": [],
   "author": "",
   "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/temp-codi/back-end/issues"
-  },
-  "homepage": "https://github.com/temp-codi/back-end#readme",
   "devDependencies": {
     "nodemon": "^2.0.20"
   },
