@@ -1,4 +1,4 @@
-# AI 기반, 날씨, 이벤트, MBTI를 판단해 옷을 추천합니다
+# Recommends outfits based on current temperature with the help of OpenAI 
 
 - [Setup](#install)
 - [REST API](#rest-api)
