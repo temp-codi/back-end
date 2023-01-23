@@ -9,9 +9,9 @@ const xss = require("xss-clean");
 const rateLimit = require("express-rate-limit");
 
 // Swagger
-const swaggerUI = require("swagger-ui-express");
-const YAML = require("yamljs");
-const swaggerDoument = YAML.load("./swagger.yaml");
+// const swaggerUI = require("swagger-ui-express");
+// const YAML = require("yamljs");
+// const swaggerDoument = YAML.load("./swagger.yaml");
 
 const express = require("express");
 const app = express();
