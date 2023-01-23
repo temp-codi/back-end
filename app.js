@@ -15,7 +15,6 @@ require("dotenv").config();
 const morgan = require("morgan");
 app.use(morgan("tiny"));
 // allow body req
-app.use(express.json());
 // cors
 app.set("trust proxy", 1); // express-rate-limit: If you are behind a proxy/load balancer (usually the case with most hosting services, e.g. Heroku, Bluemix, AWS ELB, Nginx, Cloudflare, Akamai, Fastly, Firebase Hosting, Rackspace LB, Riverbed Stingray, etc.)
 app.use(
@@ -24,9 +23,10 @@ app.use(
     max: 100, // limit each IP to 100 requests per windowMs
   })
 );
+app.use(express.json());
+app.use(helmet());
 app.use(cors());
 app.use(xss());
-app.use(helmet());
 
 // Swagger
 // const swaggerUI = require("swagger-ui-express");
