@@ -16,8 +16,9 @@ const getScrapeData = async () => {
       const id = $(this).find("td:nth-child(1)").text().trim();
       const main = $(this).find("td:nth-child(2)").text().trim();
       const desc = $(this).find("td:nth-child(3)").text().trim();
+      const icon = $(this).find("td:nth-child(4)").text().trim();
       if (id !== "") {
-        const obj = { id, main, desc };
+        const obj = { id, main, desc, icon };
         arr.push(obj);
       }
     });

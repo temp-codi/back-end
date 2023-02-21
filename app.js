@@ -54,7 +54,8 @@ app.use(errorHandlerMiddleware);
 // Testing
 /*******************************************************/
 // 노션 테이블 생성하기
-const { getTableDB } = require("./api/notion");
+const { getTableDB, createNotionDB } = require("./api/notion");
+getTableDB();
 
 const useOpenGPT = require("./api/openAi");
 

@@ -1,4 +1,4 @@
-const notionParam = ({ dbId, id, main, desc }) => {
+const notionParam = ({ dbId, id, main, desc, icon }) => {
   return {
     parent: {
       database_id: dbId,
@@ -27,6 +27,15 @@ const notionParam = ({ dbId, id, main, desc }) => {
           {
             text: {
               content: desc,
+            },
+          },
+        ],
+      },
+      icon: {
+        rich_text: [
+          {
+            text: {
+              content: icon,
             },
           },
         ],

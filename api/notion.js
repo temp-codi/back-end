@@ -17,20 +17,19 @@ const getTableDB = async () => {
     method: "POST",
   };
   const { results } = await notion.request(payload);
+  console.log(results);
 
   const table = results.map((item) => {
+    console.log(item);
     return {
       id: item.properties.id.title[0].plain_text,
       main: item.properties.main.rich_text[0].plain_text,
       desc: item.properties.desc.rich_text[0].plain_text,
-      korean:
-        item.properties.korean.rich_text.length === 0
-          ? undefined
-          : item.properties.korean.rich_text[0].plain_text,
+      icon: item.properties.icon.rich_text[0].plain_text,
     };
   });
 
-  writeFileSync("./utils/weatherCodes.js", JSON.stringify(table));
+  // writeFileSync("./utils/weatherCodes.js", JSON.stringify(table));
 };
 
 /** 데이터 베이스에 넣는 API */
@@ -41,9 +40,9 @@ const createNotionDB = async () => {
   console.log(scrapeData);
 
   for (let i = 0; i < scrapeData.length; i++) {
-    const { id, main, desc } = scrapeData[i];
+    const { id, main, desc, icon } = scrapeData[i];
     const response = await notion.pages.create(
-      notionParam({ dbId, id, main, desc })
+      notionParam({ dbId, id, main, desc, icon })
     );
   }
 };
